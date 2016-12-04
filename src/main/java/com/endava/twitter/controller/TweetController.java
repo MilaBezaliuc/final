@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 
@@ -78,15 +79,15 @@ public class TweetController {
         return "redirect:/tweet";
     }
 
-//    @RequestMapping(value = "/addtweet", method = RequestMethod.POST)
-//    public String addTweet(@RequestParam String text, @RequestParam String image) {
-//        Tweet tweet = new Tweet(userService.getUserByName(getPrincipal()), text);
-//        if (image != null && !image.isEmpty()) {
-//            tweet.setImage(image);
-//        }
-//        tweetService.addTweet(tweet);
-//        return "redirect:/tweet";
-//    }
+    @RequestMapping(value = "/addtweet", method = RequestMethod.POST)
+    public String addTweet(@RequestParam String text, @RequestParam String image) {
+        Tweet tweet = new Tweet(userService.getUserByName(getPrincipal()), text);
+        if (image != null && !image.isEmpty()) {
+            tweet.setImage(image);
+        }
+        tweetService.addTweet(tweet);
+        return "redirect:/tweet";
+    }
 
     private String getPrincipal() {
         String userName = null;

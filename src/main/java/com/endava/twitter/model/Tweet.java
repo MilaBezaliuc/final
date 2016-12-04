@@ -39,7 +39,7 @@ public class Tweet implements Serializable{
 
     @JsonIgnore
     @OneToMany(mappedBy = "tweet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @OrderBy(value = "postDateTime DESC")
+    @OrderBy(value = "postDateTime ASC")
     private List<Comment> tweetComments = new ArrayList<>();
 
     public Tweet() {

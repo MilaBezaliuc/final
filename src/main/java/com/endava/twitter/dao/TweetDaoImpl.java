@@ -72,7 +72,7 @@ public class TweetDaoImpl {
 
     public List<Comment> getComments(int tweet_id) {
         return sessionFactory.getCurrentSession()
-                .createNativeQuery("SELECT * FROM comments WHERE tweet_id=:tweet_id ORDER BY postdatetime DESC", Comment.class)
+                .createNativeQuery("SELECT * FROM comments WHERE tweet_id=:tweet_id ORDER BY postdatetime ASC", Comment.class)
                 .setParameter("tweet_id", tweet_id)
                 .getResultList();
     }

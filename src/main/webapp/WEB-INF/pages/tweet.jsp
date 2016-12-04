@@ -155,7 +155,7 @@
                 <div>
                     <div class="panel panel-default text-left">
                         <div class="panel-body" style="border: 0px">
-                            <form action="/tweet/addtweet" method="post" >
+                            <form action="/tweet/addtweet" method="post">
                                 <input type="hidden"
                                        name="${_csrf.parameterName}"
                                        value="${_csrf.token}"/>
@@ -245,7 +245,7 @@
                 </div>
             </div>
 
-            <%--Twitts--%>
+            <%--Tweets--%>
             <div id="test-id">
                 <c:forEach items="${allTweets}" var="t" varStatus="status">
                     <div class="row">
@@ -273,8 +273,7 @@
                                                  src="<c:url value="/images/" />${t.image}"></c:if>
                                     </c:if>
 
-                                    <article>
-
+                                    <article style="padding-bottom: 10px; border-bottom: 1px #777;">
                                         <span data-toggle="tooltip" data-placement="bottom" title="I like it!"
                                               onmouseover="style='color:maroon; font-size: large; border: none; background-color: #FFFFFF; border-color: #FFFFFF; cursor: pointer'"
                                                     
@@ -287,27 +286,19 @@
                                               data-like="${t.id}"
                                               data-like2="${currentUser.id}"
                                               style="font-size: large; color: rgba(219, 0, 0, 0.52); border: none; background-color: #FFFFFF; border-color: #FFFFFF; cursor: pointer;"></span>
-
                                         <span class="small muted likeCount">${t.likes}</span>
-
-                                            <%--<a class="glyphicon glyphicon-comment pull-right"--%>
-                                            <%--style="font-size: large; color: #71c3ec; text-decoration: none"--%>
-                                            <%--href="${pageContext.request.contextPath}/tweet/${t.id}/addComment#myModal"></a>--%>
-
                                     </article>
-                                    <br>
 
                                     <div class="parent">
-                                        <div class="fake" data-comment="${t.id}" onclick="getComments(${t.id},this)">
-                                            <a href="javascript:void(0);">Comments</a>
+                                        <div style="padding-bottom: 10px" class="fake" data-comment="${t.id}"
+                                             onclick="getComments(${t.id},this)">
+                                            <a class="small " href="javascript:void(0);">Show all comments</a>
                                         </div>
                                         <div>
-                                            <textarea class="form-control spec"
-                                                      placeholder="Enter here to comment..." rows="1"
-                                                      data-commid="${t.id}" maxlength=140;
-                                                      style="resize: none; overflow: hidden; font-size: large"
-                                                      name="text" aria-multiline="true">
-                                            </textarea>
+                                            <input class="form-control spec"
+                                                   placeholder="Enter here to comment..."
+                                                   data-commid="${t.id}"
+                                                   name="text"/>
                                         </div>
                                     </div>
                                 </div>
@@ -551,13 +542,8 @@
 //                console.log(elem.firstChild);
 //                elem.append(trHTML);
                 elem.innerHTML = trHTML;
-
-
             }
-
-
         });
-
     }
 </script>
 

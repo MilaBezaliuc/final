@@ -20,27 +20,28 @@ import java.util.List;
 public class User implements Serializable {
 
     public static List<String> list = new ArrayList<String>() {{
-        add("tweetty_LOGO.jpg");
-        add("tweetty_LOGO1.jpg");
-        add("tweetty_LOGO2.jpg");
-        add("tweetty_LOGO3.jpg");
-        add("tweetty_LOGO4.jpg");
-        add("tweetty_LOGO5.jpg");
-        add("tweetty_LOGO6.jpg");
-        add("tweetty_LOGO7.jpg");
-        add("tweetty_LOGO8.jpg");
-        add("tweetty_LOGO9.jpg");
-        add("tweetty_LOGO10.jpg");
-        add("tweetty_LOGO11.jpg");
-        add("tweetty_LOGO.jpg");
-        add("tweetty_LOGO1.jpg");
-        add("tweetty_LOGO2.jpg");
-        add("tweetty_LOGO3.jpg");
-        add("tweetty_LOGO4.jpg");
-        add("tweetty_LOGO5.jpg");
-        add("tweetty_LOGO6.jpg");
-        add("tweetty_LOGO7.jpg");
-        add("tweetty_LOGO8.jpg");
+        add("Characters01.png");
+        add("Characters02.png");
+        add("Characters03.png");
+        add("Characters04.png");
+        add("05.png");
+        add("032.png");
+        add("07.png");
+        add("08.png");
+        add("09.png");
+        add("010.png");
+        add("011.png");
+        add("012.png");
+        add("013.png");
+        add("027.png");
+        add("015.png");
+        add("016.png");
+        add("017.png");
+        add("018.png");
+        add("024.png");
+        add("020.png");
+        add("022.png");
+
     }};
 
     @Id
@@ -92,6 +93,14 @@ public class User implements Serializable {
     private List<User> myFollowers = new ArrayList<>();
 
     public User() {
+    }
+
+    public User(String username, String password, String first_name, String last_name, String email) {
+        this.username = username;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
     }
 
     public int getId() {

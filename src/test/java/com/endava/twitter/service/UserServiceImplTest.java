@@ -2,7 +2,6 @@ package com.endava.twitter.service;
 
 import com.endava.twitter.dao.UserDaoImpl;
 import com.endava.twitter.model.User;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,80 +18,70 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImplTest {
 
-    private static final int id = 666;
-    private static final String username = "Tester";
-    private static final String password = "qweqwe";
+    private static final String username = "Superman";
+    private static final String password = "123456";
     private static final String first_name = "Toster";
-    private static final String last_name = "Tister";
+    private static final String last_name = "Monster";
     private static final String email = "ssoulessa@gmail.com";
-    private User addUser;
-    private User updtUsr;
-    private User deleteUser;
+    private User user;
+    private User updateUser = new User();
+    private User deleteUser = new User();
 
     @Autowired
     UserDaoImpl userDao;
 
-    //ADD USER TEST
-
     @Before
     public void setUp() {
-        addUser = new User();
-        updtUsr = new User();
-        deleteUser = new User();
+        user = new User();
+        user.setUsername(username);
+        user.setFirst_name(first_name);
+        user.setPassword(password);
+        user.setEmail(email);
     }
+
 
     @Test
     public void testAddUser() throws Exception {
-
-        addUser.setUsername(username);
-        addUser.setFirst_name(first_name);
-        addUser.setPassword(password);
-        addUser.setEmail(email);
-        userDao.addUser(addUser);
+        userDao.addUser(user);
         Assert.assertNotNull(userDao.findByUsername(username));
     }
-    @After
-    public void tearDown() {
-
-        addUser.setUsername(username);
-        addUser.setPassword(password);
-        addUser.setEmail(email);
-
-        userDao.deleteUser(addUser);
-    }
-
-    //UPDATE USER TEST
 
     @Test
     public void testUpdateUser() throws Exception {
-        updtUsr = userDao.findByUsername(username);
-        updtUsr.setFirst_name(last_name);
-        userDao.updateUser(updtUsr);
+        userDao.addUser(user);
+        user.setFirst_name("Vovan");
+        userDao.updateUser(user);
 
-        Assert.assertEquals(updtUsr, userDao.findByUsername(username));
+        Assert.assertEquals(user, userDao.findByUsername(username));
     }
-
-    //DELETE USER TEST
 
     @Test
     public void testDeleteUser() throws Exception {
+        userDao.addUser(user);
         userDao.deleteUser(userDao.findByUsername(username));
+
         Assert.assertNull(userDao.findByUsername(username));
     }
 
     @Test
     public void testGetUserById() throws Exception {
+        userDao.addUser(user);
 
+        Assert.assertEquals(user, userDao.getUserById(user.getId()));
     }
 
     @Test
     public void testGetUserByName() throws Exception {
+        userDao.addUser(user);
 
+        Assert.assertEquals(user, userDao.findByUsername(username));
     }
 
     @Test
     public void testGetIdByName() throws Exception {
+        userDao.addUser(user);
 
+        Assert.assertEquals(user.getId(), userDao.getIdByName(username));
     }
 
     @Test
@@ -102,11 +91,6 @@ public class UserServiceImplTest {
 
     @Test
     public void testGetUsersIFollow() throws Exception {
-
-    }
-
-    @Test
-    public void testGetUsersIFollow1() throws Exception {
 
     }
 

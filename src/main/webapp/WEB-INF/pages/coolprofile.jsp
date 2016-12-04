@@ -92,15 +92,15 @@
                         <div class="twPc-divStats">
                             <ul class="twPc-Arrange">
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Tweets</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='tweets'/></span>
                                     <span class="twPc-StatValue status_name">${usersTweets.size()}</span>
                                 </li>
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Following</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='following'/></span>
                                     <span class="twPc-StatValue status_name">${ifollow.size()}</span>
                                 </li>
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Followers</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='followers'/></span>
                                     <span class="twPc-StatValue status_name">${followMe.size()}</span>
                                 </li>
                             </ul>
@@ -111,9 +111,9 @@
         </div>
 
         <ul class="nav nav-tabs  col-sm-6">
-            <li class="active"><a href="#home">Tweets</a></li>
-            <li><a href="#menu1">Following</a></li>
-            <li><a href="#menu2">Followers</a></li>
+            <li class="active"><a href="#home"><spring:message code='tweets'/></a></li>
+            <li><a href="#menu1"><spring:message code='following'/></a></li>
+            <li><a href="#menu2"><spring:message code='followers'/></a></li>
         </ul>
 
         <div class="tab-content">
@@ -188,7 +188,7 @@
                                                             <div class="twPc-button">
                                                                 <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
                                                                 <span class="pull-right btn btn-danger btn-xs"
-                                                                      onclick="sweetUnf('${v.username}')">- Unfollow</span>
+                                                                      onclick="sweetUnf('${v.username}')">- <spring:message code='Unfollow'/></span>
 
                                                                 <p></p>
 
@@ -225,7 +225,7 @@
                                                 </c:forEach>
                                             </td>
 
-                                            <td width="33%" valign="top"                                              style="padding: 10px; background-color: #eeeeee">
+                                            <td width="33%" valign="top" style="padding: 10px; background-color: #eeeeee">
                                                 <c:forEach items="${ifollow}" var="v" begin="1" step="3">
                                                     <div class="twPc-div" id="${v.username}">
                                                         <a class="twPc-bg twPc-block"></a>
@@ -234,7 +234,7 @@
                                                             <div class="twPc-button">
                                                                 <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
                                                                 <span class="pull-right btn btn-danger btn-xs"
-                                                                      onclick="sweetUnf('${v.username}')">- Unfollow</span>
+                                                                      onclick="sweetUnf('${v.username}')">- <spring:message code='Unfollow'/></span>
 
                                                                 <p></p>
                                                                 <br>
@@ -282,7 +282,7 @@
                                                                 <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
 
                                                                 <span class="pull-right btn btn-danger btn-xs"
-                                                                      onclick="sweetUnf('${v.username}');">- Unfollow</span>
+                                                                      onclick="sweetUnf('${v.username}');">- <spring:message code='Unfollow'/></span>
 
                                                                 <p></p>
                                                                 <br>
@@ -452,8 +452,6 @@
                                             </td>
                                         </tr>
                                     </table>
-
-
                                 </div>
                             </div>
                         </div>
@@ -461,10 +459,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-    <%--<jsp:include page="js-modal.jsp"/>--%>
 
 
     <script>

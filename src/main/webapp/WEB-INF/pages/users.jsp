@@ -78,15 +78,15 @@
                     <div class="twPc-divStats">
                         <ul class="twPc-Arrange">
                             <li class="twPc-ArrangeSizeFit">
-                                <span class="twPc-StatLabel twPc-block status_name">Tweets</span>
+                                <span class="twPc-StatLabel twPc-block status_name"><spring:message code='tweets'/></span>
                                 <span class="twPc-StatValue status_name">${myTweets.size()}</span>
                             </li>
                             <li class="twPc-ArrangeSizeFit">
-                                <span class="twPc-StatLabel twPc-block status_name">Following</span>
+                                <span class="twPc-StatLabel twPc-block status_name"><spring:message code='following'/></span>
                                 <span class="twPc-StatValue status_name">${IFollow.size()}</span>
                             </li>
                             <li class="twPc-ArrangeSizeFit">
-                                <span class="twPc-StatLabel twPc-block status_name">Followers</span>
+                                <span class="twPc-StatLabel twPc-block status_name"><spring:message code='followers'/></span>
                                 <span class="twPc-StatValue status_name">${followMe.size()}</span>
                             </li>
                         </ul>

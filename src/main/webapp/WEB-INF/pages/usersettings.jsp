@@ -29,6 +29,12 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </head>
 <body style="overflow-y: scroll;">
+<spring:message code='delete_profile' var="delete_profile"/>
+<spring:message code='description' var="description"/>
+<spring:message code='first_name' var="first_name"/>
+<spring:message code='last_name' var="last_name"/>
+<spring:message code='save_changes' var="save_changes"/>
+<spring:message code='edit_your_profile' var="edit"/>
 
 <jsp:include page="fragments/top.jsp"/>
 
@@ -53,15 +59,15 @@
                         <div class="twPc-divStats">
                             <ul class="twPc-Arrange">
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Tweets</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='tweets'/></span>
                                     <span class="twPc-StatValue status_name">${usersTweets.size()}</span>
                                 </li>
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Following</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='following'/></span>
                                     <span class="twPc-StatValue status_name">${ifollow.size()}</span>
                                 </li>
                                 <li class="twPc-ArrangeSizeFit">
-                                    <span class="twPc-StatLabel twPc-block status_name">Followers</span>
+                                    <span class="twPc-StatLabel twPc-block status_name"><spring:message code='followers'/></span>
                                     <span class="twPc-StatValue status_name">${followMe.size()}</span>
                                 </li>
                             </ul>
@@ -73,7 +79,7 @@
 
         <!--EDIT PROFILE-->
         <div class="col-sm-8">
-            <h3 class="form-signin-heading" style="color:#777">Edit your profile</h3>
+            <h3 class="form-signin-heading" style="color:#777">${edit}</h3>
             <hr class="colorgraph">
             <form:form method="POST" action="/user/profile/edit" modelAttribute="user">
 
@@ -82,7 +88,7 @@
                         <td width="30%" valign="top" style="padding: 10px; background-color: #eeeeee">
                             <div onMouseOver="this.style.color='red'; this.style.cursor='pointer'"
                                  onMouseOut="this.style.color='#777'" class="small text-muted pull-left"
-                                 onclick="sweetDel();">DELETE PROFILE</div>
+                                 onclick="sweetDel();">${delete_profile}</div>
                             <br><br>
 
                             <div>
@@ -92,7 +98,7 @@
                                     <form:hidden path="password"/>
 
                                 <section id="editable" contenteditable="true">
-                                    <form:textarea placeholder="Describe yourself" path="description"
+                                    <form:textarea placeholder="${description}" path="description"
                                                    style="border: 1px solid #ddd; box-shadow: none; resize: none; overflow: hidden; font-size: larger"
                                                    class="form-control"
                                                    maxlength="20" autofocus="true"></form:textarea>
@@ -101,7 +107,7 @@
                                         <spring:bind path="first_name">
                                 <div class="form-group alert-danger ${status.error ? 'has-error' : ''}">
                                     <form:input type="text" path="first_name" class="form-control"
-                                                placeholder="First name"
+                                                placeholder="${first_name}"
                                                 autofocus="true"/>
                                     <form:errors path="first_name"/>
                                 </div>
@@ -110,14 +116,14 @@
                                 <spring:bind path="last_name">
                                 <div class="form-group alert-danger ${status.error ? 'has-error' : ''}">
                                     <form:input type="text" path="last_name" class="form-control"
-                                                placeholder="Last name"
+                                                placeholder="${last_name}"
                                                 autofocus="true"/>
                                     <form:errors path="last_name"/>
                                 </div>
                                 </spring:bind>
 
                                 <input class="btn btn-block btn-success btn-lg" type="submit"
-                                       value="Save changes"/>
+                                       value="${save_changes}"/>
                         </td>
                         <td width="70%" valign="top" style="padding: 10px; background-color: #eeeeee">
 

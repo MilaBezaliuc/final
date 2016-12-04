@@ -160,7 +160,7 @@
                                        name="${_csrf.parameterName}"
                                        value="${_csrf.token}"/>
                                 <section id="editable" contenteditable="true">
-                                        <textarea required id="tweet" placeholder="How are you?" maxlength=140;
+                                        <textarea required id="tweet" placeholder="<spring:message code='tweet_msg'/>" maxlength=140;
                                                   style="border: none; box-shadow: none; resize: none; overflow: hidden; font-size: large"
                                                   name="text" aria-multiline="true" class="form-control"></textarea>
                                 </section>
@@ -235,7 +235,7 @@
                                 </label>
 
                                 <textarea required id="secret" name="secret" hidden></textarea>
-                                <input type="submit" class="btn btn-warning btn-sm pull-right" value="Tweet!"
+                                <input type="submit" class="btn btn-warning btn-sm pull-right" value="<spring:message code='tweet'/>"
                                        id="addTweet" onclick="$('#secret').val('secret')"/>
                                 <small class="text-info popover-content pull-right" id="counter"></small>
 
@@ -288,15 +288,17 @@
                                               style="font-size: large; color: rgba(219, 0, 0, 0.52); border: none; background-color: #FFFFFF; border-color: #FFFFFF; cursor: pointer;"></span>
                                         <span class="small muted likeCount">${t.likes}</span>
                                     </article>
-
+                                    <spring:message code='show_comments' var="show_comments"/>
+                                    <spring:message code='add_comment' var="add_comments"/>
                                     <div class="parent">
                                         <div style="padding-bottom: 10px" class="fake" data-comment="${t.id}"
                                              onclick="getComments(${t.id},this)">
-                                            <a class="small " href="javascript:void(0);">Show all comments</a>
+                                            <a class="small " href="javascript:void(0);">${show_comments}</a>
                                         </div>
                                         <div>
                                             <input class="form-control spec"
-                                                   placeholder="Enter here to comment..."
+                                                   placeholder="${add_comments}"
+                                                   maxlength="140"
                                                    data-commid="${t.id}"
                                                    name="text"/>
                                         </div>

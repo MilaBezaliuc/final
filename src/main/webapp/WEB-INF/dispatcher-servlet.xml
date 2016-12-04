@@ -30,9 +30,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
-        <property name="basenames" value="validation"/>
-    </bean>
+    <!--<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="validationMessageSource">-->
+        <!--<property name="basenames" value="validation"/>-->
+    <!--</bean>-->
 
     <context:property-placeholder location="classpath:database.properties"/>
 
@@ -65,11 +65,51 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!---->
+    <!--File Upload-->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- one of the properties available; the maximum file size in bytes -->
         <property name="maxUploadSize" value="2000000" />
     </bean>
+
+    <!-- Localization-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/*" />-->
+            <!--<ref bean="localeChangeInterceptor" />-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!--<bean id="messageSource"-->
+          <!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+        <!--<property name="basename" value="/WEB-INF/messages" />-->
+        <!--<property name="defaultEncoding" value="UTF-8" />-->
+    <!--</bean>-->
+
+    <!--<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">-->
+        <!--<property name="paramName" value="lang" />-->
+    <!--</bean>-->
+
+    <!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">-->
+        <!--<property name="defaultLocale" value="en" />-->
+    <!--</bean>-->
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="basenames" value="/WEB-INF/messages"/>
+        <property name="fallbackToSystemLocale" value="false"/>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en"/>
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="com.endava.twitter.util.ModelInterceptor"/>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+    </mvc:interceptors>
+
 
 </beans>
